@@ -1,12 +1,13 @@
 package pro.sky.questions.service;
 
+import org.springframework.stereotype.Service;
 import pro.sky.questions.exceptions.NotEnoughQuestionException;
 import pro.sky.questions.model.Question;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class ExaminerServiceImpl implements ExaminerService {
     public final QuestionService questionService;
 

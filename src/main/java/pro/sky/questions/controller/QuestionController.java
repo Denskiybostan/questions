@@ -2,11 +2,12 @@ package pro.sky.questions.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pro.sky.questions.model.Question;
 import pro.sky.questions.service.QuestionService;
 
 import java.util.Collection;
-
+@RestController
 public class QuestionController {
     private final QuestionService service;
 

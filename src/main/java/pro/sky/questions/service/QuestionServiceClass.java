@@ -1,13 +1,11 @@
 package pro.sky.questions.service;
 
+import org.springframework.stereotype.Service;
 import pro.sky.questions.exceptions.NotFoundQuestionsException;
 import pro.sky.questions.model.Question;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.*;
+@Service
 public class QuestionServiceClass implements QuestionService{
     private final Set<Question> storage = new HashSet<>();
 
@@ -36,6 +34,7 @@ public class QuestionServiceClass implements QuestionService{
     }
     @Override
     public Question getRandomQuestion() {
+        Random random = null;
         var index = random.nextInt(storage.size());
         var i = 0;
         for (Question question : storage) {
