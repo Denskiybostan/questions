@@ -34,7 +34,7 @@ public class QuestionServiceClass implements QuestionService{
     }
     @Override
     public Question getRandomQuestion() {
-        Random random = null;
+        Random random = new Random();
         var index = random.nextInt(storage.size());
         var i = 0;
         for (Question question : storage) {
