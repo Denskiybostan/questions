@@ -1,5 +1,6 @@
 package pro.sky.questions;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pro.sky.questions.exceptions.NotFoundQuestionsException;
 import pro.sky.questions.model.Question;
@@ -10,6 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+
 
 public class QuestionServiceTest {
     QuestionServiceClass questionServiceClass = new QuestionServiceClass();
@@ -49,19 +51,21 @@ public class QuestionServiceTest {
     @Test
     public void testGetRandomQuestion() {
 
-        when(questionServiceClass.getAll()).thenReturn(List.of(
-                new Question("What is your name?", "Jack"),
-                new Question("How are you?", "Fine"),
-                new Question("How long you sleep?", "8 hours")));
+        questionServiceClass.add("What is your name?", "Jack");
+        questionServiceClass.add("How are you?", "Fine");
+        questionServiceClass.add("How long you sleep?", "8 hours");
         for (int i = 0; i < 1000; i++) {
             assertTrue(QUESTIONS.contains(questionServiceClass.getRandomQuestion()));
         }
 
     }
+
     @Test
     void testEmptyQuestions() {
-        when(questionServiceClass.getAll()).thenReturn(List.of());
+        Assertions.assertNotNull(questionServiceClass.getAll());
         assertThrows(NotFoundQuestionsException.class, () -> questionServiceClass.getRandomQuestion());
-
     }
 }
+
+
+
