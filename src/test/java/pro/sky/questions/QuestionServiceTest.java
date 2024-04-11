@@ -23,9 +23,9 @@ public class QuestionServiceTest {
         questionServiceClass.add("weather", "cold");
         assertEquals(3, questionServiceClass.getAll().size());
         assertThat(questionServiceClass.getAll()).containsExactlyInAnyOrder(
-                new Question("summer", "sun"),
-                new Question("winter", "snow"),
-                new Question("rain", "water")
+                new Question("pen", "write"),
+                new Question("book", "read"),
+                new Question("weather", "cold")
         );
     }
 
@@ -63,7 +63,7 @@ public class QuestionServiceTest {
     @Test
     void testEmptyQuestions() {
         Assertions.assertNotNull(questionServiceClass.getAll());
-        assertThrows(NotFoundQuestionsException.class, () -> questionServiceClass.getRandomQuestion());
+        assertThrows(IllegalArgumentException.class, () -> questionServiceClass.getRandomQuestion());
     }
 }
 
